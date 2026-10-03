@@ -1,0 +1,17 @@
+services:
+  paperclip:
+    environment:
+      PAPERCLIP_DEPLOYMENT_EXPOSURE: public
+      PAPERCLIP_PUBLIC_URL: ${PAPERCLIP_PUBLIC_URL:?Set PAPERCLIP_PUBLIC_URL}
+  proxy:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      PAPERCLIP_HOSTNAME: ${PAPERCLIP_HOSTNAME:?Set PAPERCLIP_HOSTNAME}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./caddy-data:/data
+      - ./caddy-config:/config

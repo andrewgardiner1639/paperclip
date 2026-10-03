@@ -1,0 +1,8 @@
+{$PAPERCLIP_HOSTNAME} {
+    handle /bot-bridge/* {
+        reverse_proxy grok-bridge:3020
+    }
+    handle {
+        reverse_proxy paperclip:3100
+    }
+}

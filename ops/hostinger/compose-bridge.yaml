@@ -1,0 +1,9 @@
+services:
+  grok-bridge:
+    image: paperclip-fork:2026.1001.0
+    user: "1000:1000"
+    restart: unless-stopped
+    entrypoint: ["node", "/integrations/grok-bridge-server.mjs"]
+    volumes:
+      - ./state:/paperclip
+      - ./integrations:/integrations:ro

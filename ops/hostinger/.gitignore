@@ -1,0 +1,10 @@
+*.env
+*.private*
+*.sql*
+*.tar*
+state/
+postgres/
+integrations/
+backups/
+caddy-data/
+caddy-config/
